@@ -1,0 +1,12 @@
+{
+  "name": "md_to_html",
+  "version": "1.0.0",
+  "description": "Small Node CLI to convert Markdown files to HTML",
+  "bin": {
+    "md_to_html": "./md_to_html.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "marked": "^17.0.5"
+  }
+}
