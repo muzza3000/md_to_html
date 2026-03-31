@@ -2,6 +2,7 @@
 
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const { version } = require('./package.json');
 
 const MIME_TYPES = {
   '.gif': 'image/gif',
@@ -170,12 +171,12 @@ async function embedLocalImages(html, markdownPath) {
 }
 
 function getHelpText() {
-  return `md_to_html
+  return `md-to-html
 
 Convert a Markdown file to HTML.
 
 Usage:
-  node md_to_html.js [options] <input.md> [output.html]
+  md-to-html [options] <input.md> [output.html]
 
 Options:
   -e, --embed-images      Embed local images as base64 data URLs (default)
@@ -183,6 +184,7 @@ Options:
   -f, --fragment          Output only the rendered HTML fragment
   -F, --full-document     Output a full HTML document (default)
   -s, --stylesheet        Add the default stylesheet with the SLB/Noto font stack
+  -v, --version           Show the CLI version
   -h, --help              Show this help message
 `;
 }
@@ -192,6 +194,7 @@ function parseArgs(argv) {
   let fullDocument = true;
   let addStylesheet = false;
   let showHelp = false;
+  let showVersion = false;
   const positionalArgs = [];
 
   for (const arg of argv) {
@@ -225,6 +228,11 @@ function parseArgs(argv) {
       continue;
     }
 
+    if (arg === '-v' || arg === '--version') {
+      showVersion = true;
+      continue;
+    }
+
     positionalArgs.push(arg);
   }
 
@@ -233,16 +241,22 @@ function parseArgs(argv) {
     fullDocument,
     addStylesheet,
     showHelp,
+    showVersion,
     positionalArgs,
   };
 }
 
 async function main() {
-  const { embedImages, fullDocument, addStylesheet, showHelp, positionalArgs } = parseArgs(process.argv.slice(2));
+  const { embedImages, fullDocument, addStylesheet, showHelp, showVersion, positionalArgs } = parseArgs(process.argv.slice(2));
   const [inputArg, outputArg] = positionalArgs;
 
   if (showHelp) {
     console.log(getHelpText());
+    process.exit(0);
+  }
+
+  if (showVersion) {
+    console.log(version);
     process.exit(0);
   }
 
