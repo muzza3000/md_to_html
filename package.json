@@ -1,6 +1,6 @@
 {
   "name": "@muzza3000/md-to-html",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Small Node CLI to convert Markdown files to HTML",
   "keywords": [
     "markdown",

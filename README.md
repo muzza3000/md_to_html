@@ -24,7 +24,7 @@ If `output.html` is omitted, the CLI writes next to the input file using the sam
 - `-E`, `--no-embed-images`: keep local image file paths instead of embedding them.
 - `-f`, `--fragment`: output only the rendered HTML fragment.
 - `-F`, `--full-document`: output a full HTML document. This is the default.
-- `-s`, `--stylesheet`: add the built-in stylesheet with the SLB/Noto font stack.
+- `-s`, `--stylesheet`: add the built-in stylesheet with the SLB/Noto font stack and styled tables.
 - `-h`, `--help`: show the help message.
 
 ## Examples

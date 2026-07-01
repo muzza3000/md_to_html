@@ -19,6 +19,21 @@ const DEFAULT_STYLESHEET = `body {
   line-height: 1.5;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #b8b8b8;
+  padding: 6px 10px;
+}
+
+th {
+  background: #0140dc;
+  color: #ffffff;
+}
+
 pre {
   background: #f5f7f8;
   border: 1px solid #d9e1e4;
